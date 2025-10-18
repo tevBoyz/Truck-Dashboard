@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import Home from './pages/Home';
 import Charging from './pages/Charging';
 import Payment from './pages/Payment';
+import {toast} from 'sonner'
 
 const queryClient = new QueryClient();
 
@@ -48,6 +49,7 @@ const AppContent = () => {
   };
 
   const handleLogout = () => {
+    toast("Logout Successful")
     setScreen('login');
   };
 
