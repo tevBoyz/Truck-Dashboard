@@ -49,7 +49,7 @@ const AppContent = () => {
   };
 
   const handleLogout = () => {
-    toast("Logout Successful")
+    toast.success("Logout Successful")
     setScreen('login');
   };
 
