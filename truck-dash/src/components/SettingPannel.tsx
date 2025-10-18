@@ -1,18 +1,15 @@
-import { Settings, User, Bell, Shield, Info } from 'lucide-react';
+import { Settings, User, Bell, Shield, Info, LogOut } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
-import { Button } from './ui/button';
 import { Separator } from '@/components/ui/separator';
-import { useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
-const SettingsPanel = () => {
-//   const navigate = useNavigate();
+interface SettingsPanelProps {
+  onLogout: () => void;
+}
 
-//   const logout = () => {
-//   navigate('/Login')
-// }
-
+const SettingsPanel = ({ onLogout }: SettingsPanelProps) => {
   return (
     <div className="space-y-6">
       <Card>
@@ -39,9 +36,14 @@ const SettingsPanel = () => {
         </CardContent>
       </Card>
 
-      {/* <Button className='text-lg bg-[#ff0000] text-white w-full h-1xl hover:bg-[#ff0000]/50' onClick={logout}>
+       <Button
+        variant="destructive"
+        className="w-full"
+        onClick={onLogout}
+      >
+        <LogOut className="w-4 h-4 mr-2" />
         Logout
-      </Button> */}
+      </Button>
 
       <Card>
         <CardHeader>
@@ -122,6 +124,8 @@ const SettingsPanel = () => {
           </div>
         </CardContent>
       </Card>
+
+     
     </div>
   );
 };

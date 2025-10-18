@@ -47,11 +47,15 @@ const AppContent = () => {
     setScreen('home');
   };
 
+  const handleLogout = () => {
+    setScreen('login');
+  };
+
   return (
     <AnimatePresence mode="wait">
       {screen === 'splash' && <Splash key="splash" />}
       {screen === 'login' && <Login key="login" onLogin={handleLogin} />}
-      {screen === 'home' && <Home key="home" />}
+      {screen === 'home' && <Home key="home" onLogout={handleLogout} />}
       {screen === 'charging' && <Charging key="charging" />}
       {screen === 'payment' && <Payment key="payment" onComplete={handlePaymentComplete} />}
     </AnimatePresence>

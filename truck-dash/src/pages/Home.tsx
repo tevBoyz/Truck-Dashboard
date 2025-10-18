@@ -9,9 +9,13 @@ import TelemetryCard from '@/components/TelemetryCard';
 import TruckLocationCard from '@/components/TruckLocationCard';
 import MapView from '../components/Mapview';
 import StationList from '@/components/StationList';
-import SettingsPanel from '@/components/SettingPannel';
+import SettingsPanel from '../components/SettingPannel';
 
-const Home = () => {
+interface HomeProps {
+  onLogout: () => void;
+}
+
+const Home = ({ onLogout }: HomeProps) => {
   const [viewMode, setViewMode] = useState<'map' | 'list'>('map');
 
   return (
@@ -63,7 +67,7 @@ const Home = () => {
                       onClick={() => setViewMode('map')}
                     >
                       <Map className="w-4 h-4 mr-2" />
-                      Map
+                      <span className='hidden md:block lg:block'>Map</span>
                     </Button>
                     <Button
                       variant={viewMode === 'list' ? 'default' : 'outline'}
@@ -71,7 +75,7 @@ const Home = () => {
                       onClick={() => setViewMode('list')}
                     >
                       <List className="w-4 h-4 mr-2" />
-                      List
+                      <span className='hidden md:block lg:block'>List</span>
                     </Button>
                   </div>
                 </div>
@@ -95,7 +99,7 @@ const Home = () => {
           </TabsContent>
 
           <TabsContent value="settings">
-            <SettingsPanel />
+            <SettingsPanel onLogout={onLogout} />
           </TabsContent>
         </Tabs>
       </main>
